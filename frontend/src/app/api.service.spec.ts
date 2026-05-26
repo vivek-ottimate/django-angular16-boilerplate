@@ -22,11 +22,11 @@ describe('ApiService', () => {
 
   it('should GET /api/hello/ and return message', () => {
     service.getHello().subscribe(data => {
-      expect(data).toEqual({ message: 'Hello from Django!' });
+      expect(data).toEqual({ message: 'Hello from Django!', ping_count: 1 });
     });
 
     const req = httpMock.expectOne('http://localhost:8000/api/hello/');
     expect(req.request.method).toBe('GET');
-    req.flush({ message: 'Hello from Django!' });
+    req.flush({ message: 'Hello from Django!', ping_count: 1 });
   });
 });

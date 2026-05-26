@@ -1,12 +1,15 @@
 {
     "name": "Django + Angular 16",
-    "image": "mcr.microsoft.com/devcontainers/python:3.11",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": ".."
+    },
     "features": {
         "ghcr.io/devcontainers/features/node:1": {
             "version": "18"
         }
     },
-    "postCreateCommand": "bash .devcontainer/setup.sh",
+    "postCreateCommand": "npm --prefix frontend install",
     "forwardPorts": [8000, 4200],
     "portsAttributes": {
         "8000": { "label": "Django Backend" },

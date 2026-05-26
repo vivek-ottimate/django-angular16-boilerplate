@@ -42,7 +42,7 @@ python3 -m venv env
 source env/bin/activate        # Windows: env\Scripts\activate
 cd backend
 pip install -r requirements.txt
-python manage.py runserver
+python manage.py runserver 0.0.0.0:8000
 ```
 
 Django runs at `http://localhost:8000`

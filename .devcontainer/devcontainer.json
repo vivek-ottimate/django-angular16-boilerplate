@@ -6,7 +6,7 @@
             "version": "18"
         }
     },
-    "postCreateCommand": "python -m pip install -r backend/requirements.txt && cd frontend && npm install",
+    "postCreateCommand": "bash .devcontainer/setup.sh",
     "forwardPorts": [8000, 4200],
     "portsAttributes": {
         "8000": { "label": "Django Backend" },

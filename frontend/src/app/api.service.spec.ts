@@ -25,7 +25,7 @@ describe('ApiService', () => {
       expect(data).toEqual({ message: 'Hello from Django!', ping_count: 1 });
     });
 
-    const req = httpMock.expectOne('http://localhost:8000/api/hello/');
+    const req = httpMock.expectOne('/api/hello/');
     expect(req.request.method).toBe('GET');
     req.flush({ message: 'Hello from Django!', ping_count: 1 });
   });

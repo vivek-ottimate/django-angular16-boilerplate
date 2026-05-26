@@ -1,34 +1,68 @@
 # Django + Angular 16 Assessment
 
-## Setup Instructions
+## Prerequisites
 
-Open **two terminal tabs** in VS Code (Terminal → New Terminal, then click `+` for a second tab).
+- Python 3.10+
+- Node.js 18+
 
-### Terminal 1: Django Backend
+## Setup
+
+### 1. Clone the repo
+
 ```bash
-cd backend
-pip install -r requirements.txt
-python manage.py runserver 0.0.0.0:8000
+git clone https://github.com/vivek-ottimate/django-angular16-boilerplate.git
+cd django-angular16-boilerplate
 ```
 
-### Terminal 2: Angular Frontend
+### 2. Backend
+
+```bash
+python3 -m venv env
+source env/bin/activate        # Windows: env\Scripts\activate
+cd backend
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+Django runs at `http://localhost:8000`
+
+### 3. Frontend
+
+Open a second terminal tab:
+
 ```bash
 cd frontend
 npm install
 npm start
 ```
 
-## Viewing the Apps (Coderbyte / Cloud IDE)
+Angular runs at `http://localhost:4200`
 
-Once both servers are running:
+## Verify the connection
 
-1. Click the **Ports** tab in the bottom panel (next to the Terminal tab).
-2. You will see Port `8000` (Django) and Port `4200` (Angular) listed.
-3. Hover over the **Forwarded Address** for Port 4200 and click the **Globe icon** to open it in the browser.
+Open `http://localhost:4200` and click **Ping Backend** — you should see a message and a ping count returned from Django.
 
-The URL will look like `https://4200-project-<id>.cblab.app` — this is the Angular app.
+## Running tests
 
-## Notes
+**Django:**
+```bash
+cd backend
+python manage.py test
+```
 
-- Both servers bind to `0.0.0.0` so Coderbyte's proxy can reach them.
-- `ALLOWED_HOSTS = ['*']` and `CORS_ALLOW_ALL_ORIGINS = True` are set for the assessment environment. Restrict these in any real deployment.
+**Angular:**
+```bash
+cd frontend
+npm test
+```
+
+## Project structure
+
+```
+├── backend/          # Django project
+│   ├── api/          # Example app — models, views, tests
+│   └── backend/      # Django settings and URLs
+└── frontend/         # Angular 16 app
+    └── src/app/      # Components and services
+```

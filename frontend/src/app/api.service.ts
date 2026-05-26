@@ -8,7 +8,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) {}
 
-  getHello(): Observable<{ message: string }> {
-    return this.http.get<{ message: string }>(`${this.apiUrl}/hello/`);
+  getHello(): Observable<{ message: string; ping_count: number }> {
+    return this.http.get<{ message: string; ping_count: number }>(`${this.apiUrl}/hello/`);
   }
 }

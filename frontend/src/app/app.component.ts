@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ApiService } from './api.service';
 
 @Component({
@@ -6,16 +6,27 @@ import { ApiService } from './api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   message = '';
+  pingCount: number | null = null;
   error = '';
+  loading = false;
 
   constructor(private api: ApiService) {}
 
-  ngOnInit() {
+  ping() {
+    this.loading = true;
+    this.error = '';
     this.api.getHello().subscribe({
-      next: (data) => this.message = data.message,
-      error: () => this.error = 'Could not connect to Django backend.'
+      next: (data) => {
+        this.message = data.message;
+        this.pingCount = data.ping_count;
+        this.loading = false;
+      },
+      error: () => {
+        this.error = 'Could not connect to Django backend.';
+        this.loading = false;
+      }
     });
   }
 }

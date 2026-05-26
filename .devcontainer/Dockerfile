@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python:3.11
+FROM mcr.microsoft.com/devcontainers/python:3.12
 
 # Install Python dependencies at image build time — no postCreateCommand needed
 COPY backend/requirements.txt /tmp/pip-requirements.txt
